@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Settings — BEHRUZ.DEV Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body" data-page="settings">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-header"><a href="dashboard.html">BEHRUZ.DEV</a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">📊 Dashboard</a>
+        <a href="projects.html">📁 Projects</a>
+        <a href="profile.html">👤 Profile</a>
+        <a href="messages.html">✉ Messages</a>
+        <a href="settings.html" class="active">⚙ Settings</a>
+        <a href="../index.html" target="_blank">🌐 View Site</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <button class="sidebar-toggle">☰</button>
+        <h2>Settings</h2>
+      </div>
+      <div class="admin-content">
+        <form id="settings-form" class="admin-form">
+          <div class="form-group">
+            <label>Site Name</label>
+            <input type="text" id="set-sitename">
+          </div>
+          <div class="form-group">
+            <label>Tagline</label>
+            <input type="text" id="set-tagline">
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="set-showstats"> Show statistics on homepage
+            </label>
+          </div>
+          <button type="submit" class="btn-admin">Save Settings</button>
+        </form>
+
+        <div class="admin-form" style="margin-top:2rem;">
+          <h3 style="margin-bottom:1rem;font-family:monospace;color:var(--neon);">Security Notice</h3>
+          <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;">
+            This admin panel uses client-side authentication for <strong>demo purposes only</strong>.
+            Credentials are checked in JavaScript and session is stored in sessionStorage.
+            <br><br>
+            <strong>For production:</strong>
+            <br>• Implement server-side authentication
+            <br>• Hash passwords (bcrypt / argon2)
+            <br>• Use secure HTTP-only cookies / JWT
+            <br>• Protect all admin API endpoints
+            <br>• Never store passwords in frontend code
+          </p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/storage.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

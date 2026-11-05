@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Projects — BEHRUZ.DEV Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body" data-page="projects">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-header"><a href="dashboard.html">BEHRUZ.DEV</a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">📊 Dashboard</a>
+        <a href="projects.html" class="active">📁 Projects</a>
+        <a href="profile.html">👤 Profile</a>
+        <a href="messages.html">✉ Messages</a>
+        <a href="settings.html">⚙ Settings</a>
+        <a href="../index.html" target="_blank">🌐 View Site</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <button class="sidebar-toggle">☰</button>
+        <h2>Projects</h2>
+        <button class="btn-admin" onclick="showProjectForm()">+ Add Project</button>
+      </div>
+      <div class="admin-content">
+        <div id="project-form-area" style="display:none;margin-bottom:2rem;"></div>
+        
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="projects-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Technologies</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/storage.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Behruz Norsafarov — Frontend Developer Portfolio. Modern, fast and beautiful web applications.">
+  <meta name="keywords" content="Behruz Norsafarov, Frontend Developer, Portfolio, Web Developer, Uzbekistan">
+  <meta name="author" content="Behruz Norsafarov">
+  <meta property="og:title" content="BEHRUZ.DEV — Frontend Developer">
+  <meta property="og:description" content="Professional Cyber Hacker style developer portfolio">
+  <meta property="og:type" content="website">
+  <title>BEHRUZ.DEV — Frontend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+<!-- Backgrounds -->
+  <canvas class="matrix-bg"></canvas>
+  <div class="grid-bg"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">BEHRUZ<span>.DEV</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active" data-i18n="nav_home">Home</a></li>
+        <li><a href="about.html" data-i18n="nav_about">About</a></li>
+        <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn" data-lang="uz">UZ</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ru">RU</button>
+        </li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="greeting" data-i18n="hero_greeting">Hello, I am</span>
+          <h1>Behruz <span class="neon-text">Norsafarov</span></h1>
+          <div class="role terminal-text">Frontend Developer</div>
+          <p class="intro" data-i18n="hero_intro">I build modern, fast and beautiful web applications. I strive for excellence in every project.</p>
+          <div class="hero-actions">
+            <a href="projects.html" class="btn btn-primary" data-i18n="hero_projects">View Projects</a>
+            <button class="btn btn-outline" onclick="downloadCV()" data-i18n="hero_cv">Download CV</button>
+          </div>
+          <div class="social-links"></div>
+        </div>
+        <div class="hero-image">
+          <div class="profile-frame animate-float animate-glow"></div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats reveal">
+        <div class="stat-card glass">
+          <div class="stat-number" data-target="10+">0</div>
+          <div class="stat-label" data-i18n="stat_projects">Projects</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-number" data-target="3+">0</div>
+          <div class="stat-label" data-i18n="stat_experience">Years Exp.</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-number" data-target="5+">0</div>
+          <div class="stat-label" data-i18n="stat_clients">Clients</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-number" data-target="500+">0</div>
+          <div class="stat-label" data-i18n="stat_commits">Commits</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" data-i18n="featured_label">Featured</span>
+        <h2 data-i18n="featured_title">Featured Projects</h2>
+        <p data-i18n="featured_desc">My latest and most important work</p>
+      </div>
+      <div id="projects-grid" class="projects-grid" data-featured="true"></div>
+      <div class="text-center mt-4">
+        <a href="projects.html" class="btn btn-outline" data-i18n="view_all">View All</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="footer-logo">BEHRUZ.DEV</a>
+        <p class="footer-copy">&copy; 2026 Behruz Norsafarov. <span data-i18n="footer_rights">All rights reserved.</span></p>
+        <div class="footer-links">
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="projects.html" data-i18n="nav_projects">Projects</a>
+          <a href="contact.html" data-i18n="nav_contact">Contact</a>
+          <span class="live-clock"></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="js/storage.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/projects.js"></script>
+</body>
+</html>

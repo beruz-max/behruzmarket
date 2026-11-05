@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Behruz Norsafarov — Frontend Developer and UI/UX Designer">
+  <title>About — BEHRUZ.DEV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <div class="loader">
+    <div class="loader-logo">BEHRUZ.DEV</div>
+    <div class="loader-bar"><div class="loader-progress"></div></div>
+    <div class="loader-text">Loading...</div>
+  </div>
+
+  <canvas class="matrix-bg"></canvas>
+  <div class="grid-bg"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">BEHRUZ<span>.DEV</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+        <li><a href="about.html" class="active" data-i18n="nav_about">About</a></li>
+        <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+        <li><a href="skills.html" data-i18n="nav_skills">Skills</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn" data-lang="uz">UZ</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ru">RU</button>
+        </li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="section" style="padding-top: 120px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" data-i18n="about_label">About Me</span>
+        <h2 data-i18n="about_title">Who am I?</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <div class="profile-frame" style="border-radius: 16px;"></div>
+        </div>
+        <div class="about-content reveal">
+          <div id="about-text"></div>
+          
+          <h3 class="mt-4" style="margin-bottom:1rem;" data-i18n="about_personal">Personal Info</h3>
+          <ul class="info-list" id="info-list"></ul>
+
+          <h3 class="mt-4" style="margin-bottom:0.8rem;" data-i18n="about_philosophy">My Philosophy</h3>
+          <p id="philosophy-text" style="color:var(--text-muted);font-style:italic;"></p>
+
+          <h3 class="mt-4" style="margin-bottom:0.8rem;" data-i18n="about_goals">My Goals</h3>
+          <p id="goals-text" style="color:var(--text-muted);"></p>
+
+          <h3 class="mt-4" style="margin-bottom:1.5rem;" data-i18n="about_journey">My Journey</h3>
+          <div class="timeline" id="timeline"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="footer-logo">BEHRUZ.DEV</a>
+        <p class="footer-copy">&copy; 2026 Behruz Norsafarov. <span data-i18n="footer_rights">All rights reserved.</span></p>
+        <div class="footer-links">
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="projects.html" data-i18n="nav_projects">Projects</a>
+          <a href="contact.html" data-i18n="nav_contact">Contact</a>
+          <span class="live-clock"></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="js/storage.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function renderAbout() {
+      const profile = Storage.getProfile();
+      const lang = Storage.getLang();
+
+      const aboutText = document.getElementById('about-text');
+      if (aboutText) {
+        const text = typeof profile.about === 'object' ? (profile.about[lang] || profile.about.en) : profile.about;
+        aboutText.innerHTML = `<p>${text}</p>`;
+      }
+
+      const infoList = document.getElementById('info-list');
+      if (infoList) {
+        const location = typeof profile.location === 'object' ? (profile.location[lang] || profile.location.en) : profile.location;
+        infoList.innerHTML = `
+          <li><span data-i18n="about_name">Name</span><span>${profile.name}</span></li>
+          <li><span data-i18n="about_location">Location</span><span>${location}</span></li>
+          <li><span data-i18n="about_email">Email</span><span>${profile.email}</span></li>
+        `;
+        applyTranslations();
+      }
+
+      const philosophy = document.getElementById('philosophy-text');
+      if (philosophy) {
+        philosophy.textContent = typeof profile.philosophy === 'object' ? (profile.philosophy[lang] || profile.philosophy.en) : profile.philosophy;
+      }
+
+      const goals = document.getElementById('goals-text');
+      if (goals) {
+        goals.textContent = typeof profile.goals === 'object' ? (profile.goals[lang] || profile.goals.en) : profile.goals;
+      }
+
+      const timeline = document.getElementById('timeline');
+      if (timeline && profile.journey) {
+        timeline.innerHTML = profile.journey.map(item => {
+          const title = typeof item.title === 'object' ? (item.title[lang] || item.title.en) : item.title;
+          const desc = typeof item.desc === 'object' ? (item.desc[lang] || item.desc.en) : item.desc;
+          return `
+            <div class="timeline-item">
+              <div class="timeline-year">${item.year}</div>
+              <h4>${title}</h4>
+              <p>${desc}</p>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', renderAbout);
+  </script>
+</body>
+</html>

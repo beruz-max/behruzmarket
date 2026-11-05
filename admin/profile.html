@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Profile — BEHRUZ.DEV Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body" data-page="profile">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="sidebar-header"><a href="dashboard.html">BEHRUZ.DEV</a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">📊 Dashboard</a>
+        <a href="projects.html">📁 Projects</a>
+        <a href="profile.html" class="active">👤 Profile</a>
+        <a href="messages.html">✉ Messages</a>
+        <a href="settings.html">⚙ Settings</a>
+        <a href="../index.html" target="_blank">🌐 View Site</a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <button class="sidebar-toggle">☰</button>
+        <h2>Profile</h2>
+      </div>
+      <div class="admin-content">
+        <form id="profile-form" class="admin-form">
+          <div class="form-group">
+            <label>Profile Image</label>
+            <div class="upload-area">
+              <input type="file" id="profile-image" accept="image/*">
+              <p>Click to upload profile photo</p>
+              <img class="upload-preview" id="profile-image-preview" alt="Preview">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="profile-name" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="profile-email">
+            </div>
+            <div class="form-group">
+              <label>Telegram URL</label>
+              <input type="url" id="profile-telegram">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>GitHub URL</label>
+              <input type="url" id="profile-github">
+            </div>
+            <div class="form-group">
+              <label>Instagram URL</label>
+              <input type="url" id="profile-instagram">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Short Bio (EN)</label>
+            <textarea id="profile-bio-en"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Short Bio (UZ)</label>
+            <textarea id="profile-bio-uz"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Short Bio (RU)</label>
+            <textarea id="profile-bio-ru"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>About Text (EN)</label>
+            <textarea id="profile-about-en" style="min-height:120px;"></textarea>
+          </div>
+          <div class="form-group">
+            <label>About Text (UZ)</label>
+            <textarea id="profile-about-uz" style="min-height:120px;"></textarea>
+          </div>
+          <div class="form-group">
+            <label>About Text (RU)</label>
+            <textarea id="profile-about-ru" style="min-height:120px;"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>CV Upload (PDF)</label>
+            <input type="file" id="profile-cv" accept=".pdf">
+            <p id="cv-status" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.4rem;"></p>
+          </div>
+
+          <button type="submit" class="btn-admin">Save Profile</button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/storage.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Technical skills of Behruz Norsafarov — Frontend Developer">
+  <title>Skills — BEHRUZ.DEV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <div class="loader">
+    <div class="loader-logo">BEHRUZ.DEV</div>
+    <div class="loader-bar"><div class="loader-progress"></div></div>
+    <div class="loader-text">Loading...</div>
+  </div>
+
+  <canvas class="matrix-bg"></canvas>
+  <div class="grid-bg"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">BEHRUZ<span>.DEV</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+        <li><a href="about.html" data-i18n="nav_about">About</a></li>
+        <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+        <li><a href="skills.html" class="active" data-i18n="nav_skills">Skills</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn" data-lang="uz">UZ</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ru">RU</button>
+        </li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="section" style="padding-top: 120px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" data-i18n="skills_label">Capabilities</span>
+        <h2 data-i18n="skills_title">Technical Skills</h2>
+        <p data-i18n="skills_desc">Continuous learning and growth</p>
+      </div>
+
+      <div id="skills-grid" class="skills-grid"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="footer-logo">BEHRUZ.DEV</a>
+        <p class="footer-copy">&copy; 2026 Behruz Norsafarov. <span data-i18n="footer_rights">All rights reserved.</span></p>
+        <div class="footer-links">
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="projects.html" data-i18n="nav_projects">Projects</a>
+          <a href="contact.html" data-i18n="nav_contact">Contact</a>
+          <span class="live-clock"></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="js/storage.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/skills.js"></script>
+</body>
+</html>

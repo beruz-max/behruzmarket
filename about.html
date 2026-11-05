@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Behruz Norsafarov — Frontend Developer and UI/UX Designer">
+  <title>About — BEHRUZ.DEV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <canvas class="matrix-bg"></canvas>
+  <div class="grid-bg"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">BEHRUZ<span>.DEV</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+        <li><a href="about.html" class="active" data-i18n="nav_about">About</a></li>
+        <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn" data-lang="uz">UZ</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ru">RU</button>
+        </li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="section" style="padding-top: 120px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" data-i18n="about_label">About Me</span>
+        <h2 data-i18n="about_title">Who am I?</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <div class="profile-frame" style="border-radius: 16px;"></div>
+          <div class="text-center mt-3">
+            <button class="btn btn-primary" onclick="downloadCV()" data-i18n="hero_cv">Download CV</button>
+          </div>
+        </div>
+        <div class="about-content reveal">
+          <div id="about-text"></div>
+          
+          <h3 class="mt-4" style="margin-bottom:1rem;" data-i18n="about_personal">Personal Info</h3>
+          <ul class="info-list" id="info-list"></ul>
+
+          <h3 class="mt-4" style="margin-bottom:0.8rem;" data-i18n="about_philosophy">My Philosophy</h3>
+          <p id="philosophy-text" style="color:var(--text-muted);font-style:italic;"></p>
+
+          <h3 class="mt-4" style="margin-bottom:0.8rem;" data-i18n="about_goals">My Goals</h3>
+          <p id="goals-text" style="color:var(--text-muted);"></p>
+        </div>
+      </div>
+
+      <div class="about-extra" style="margin-top:4rem;">
+        <div class="section-header reveal">
+          <span class="label" data-i18n="about_journey">My Journey</span>
+          <h2 data-i18n="about_journey_title">Developer Path</h2>
+        </div>
+        <div class="timeline reveal" id="timeline" style="max-width:800px;margin:0 auto;"></div>
+      </div>
+
+      <div class="about-extra" style="margin-top:4rem;">
+        <div class="section-header reveal">
+          <span class="label" data-i18n="about_services_label">Services</span>
+          <h2 data-i18n="about_services_title">What I Offer</h2>
+        </div>
+        <div class="projects-grid" id="services-grid"></div>
+      </div>
+
+      <div class="about-extra" style="margin-top:4rem;">
+        <div class="section-header reveal">
+          <span class="label" data-i18n="about_soft_label">Soft Skills</span>
+          <h2 data-i18n="about_soft_title">Beyond Code</h2>
+        </div>
+        <div class="skills-grid" id="soft-skills-grid"></div>
+      </div>
+
+      <div class="about-extra" style="margin-top:4rem;margin-bottom:2rem;">
+        <div class="section-header reveal">
+          <span class="label" data-i18n="about_interests_label">Interests</span>
+          <h2 data-i18n="about_interests_title">What Drives Me</h2>
+        </div>
+        <div class="projects-grid" id="interests-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="footer-logo">BEHRUZ.DEV</a>
+        <p class="footer-copy">&copy; 2026 Behruz Norsafarov. <span data-i18n="footer_rights">All rights reserved.</span></p>
+        <div class="footer-links">
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="projects.html" data-i18n="nav_projects">Projects</a>
+          <a href="contact.html" data-i18n="nav_contact">Contact</a>
+          <span class="live-clock"></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="js/storage.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function renderAbout() {
+      const profile = Storage.getProfile();
+      const lang = Storage.getLang();
+
+      const aboutText = document.getElementById('about-text');
+      if (aboutText) {
+        const text = typeof profile.about === 'object' ? (profile.about[lang] || profile.about.en) : profile.about;
+        aboutText.innerHTML = '<p>' + text + '</p>';
+      }
+
+      const infoList = document.getElementById('info-list');
+      if (infoList) {
+        const location = typeof profile.location === 'object' ? (profile.location[lang] || profile.location.en) : profile.location;
+        const age = profile.age || '—';
+        const education = typeof profile.education === 'object' ? (profile.education[lang] || profile.education.en) : (profile.education || '—');
+        const expLabel = lang === 'uz' ? 'yil' : (lang === 'ru' ? 'лет' : 'years');
+        infoList.innerHTML =
+          '<li><span data-i18n="about_name">Name</span><span>' + profile.name + '</span></li>' +
+          '<li><span data-i18n="about_location">Location</span><span>' + location + '</span></li>' +
+          '<li><span data-i18n="about_email">Email</span><span>' + profile.email + '</span></li>' +
+          '<li><span data-i18n="about_age">Age</span><span>' + age + '</span></li>' +
+          '<li><span data-i18n="about_education">Education</span><span>' + education + '</span></li>' +
+          '<li><span data-i18n="about_experience">Experience</span><span>' + (profile.experience || '3+') + ' ' + expLabel + '</span></li>';
+        applyTranslations();
+      }
+
+      const philosophy = document.getElementById('philosophy-text');
+      if (philosophy) {
+        philosophy.textContent = typeof profile.philosophy === 'object' ? (profile.philosophy[lang] || profile.philosophy.en) : profile.philosophy;
+      }
+
+      const goals = document.getElementById('goals-text');
+      if (goals) {
+        goals.textContent = typeof profile.goals === 'object' ? (profile.goals[lang] || profile.goals.en) : profile.goals;
+      }
+
+      const timeline = document.getElementById('timeline');
+      if (timeline && profile.journey) {
+        timeline.innerHTML = profile.journey.map(function(item) {
+          const title = typeof item.title === 'object' ? (item.title[lang] || item.title.en) : item.title;
+          const desc = typeof item.desc === 'object' ? (item.desc[lang] || item.desc.en) : item.desc;
+          return '<div class="timeline-item"><div class="timeline-year">' + item.year + '</div><h4>' + title + '</h4><p>' + desc + '</p></div>';
+        }).join('');
+      }
+
+      const services = profile.services || [
+        { icon: '◈', title: { uz: 'Frontend Development', en: 'Frontend Development', ru: 'Frontend Development' }, desc: { uz: 'Zamonaviy, tezkor va responsive veb-interfeyslar.', en: 'Modern, fast and responsive web interfaces.', ru: 'Современные, быстрые и адаптивные веб-интерфейсы.' } },
+        { icon: '◇', title: { uz: 'UI/UX Dizayn', en: 'UI/UX Design', ru: 'UI/UX Дизайн' }, desc: { uz: 'Foydalanuvchi uchun qulay va estetik interfeyslar.', en: 'User-friendly and aesthetic interfaces.', ru: 'Удобные и эстетичные интерфейсы.' } },
+        { icon: '◎', title: { uz: 'Landing Page', en: 'Landing Pages', ru: 'Лендинги' }, desc: { uz: "Konversiyaga yo'naltirilgan landing sahifalar.", en: 'Conversion-focused landing pages.', ru: 'Лендинги, ориентированные на конверсию.' } },
+        { icon: '▣', title: { uz: 'Kod Optimizatsiya', en: 'Code Optimization', ru: 'Оптимизация кода' }, desc: { uz: 'Performance va toza kod tuzilmasi.', en: 'Performance and clean code structure.', ru: 'Производительность и чистая структура кода.' } }
+      ];
+      const sg = document.getElementById('services-grid');
+      if (sg) {
+        sg.innerHTML = services.map(function(s, i) {
+          const t = typeof s.title === 'object' ? (s.title[lang] || s.title.en) : s.title;
+          const d = typeof s.desc === 'object' ? (s.desc[lang] || s.desc.en) : s.desc;
+          return '<div class="project-card glass reveal stagger-' + ((i % 4) + 1) + '"><div class="project-body" style="padding:1.8rem;"><div style="font-size:2rem;color:var(--neon);margin-bottom:0.8rem;">' + s.icon + '</div><h3 style="margin-bottom:0.5rem;">' + t + '</h3><p style="color:var(--text-muted);font-size:0.9rem;">' + d + '</p></div></div>';
+        }).join('');
+      }
+
+      const soft = profile.softSkills || [
+        { name: { uz: 'Muammolarni yechish', en: 'Problem Solving', ru: 'Решение проблем' }, percent: 90 },
+        { name: { uz: 'Jamoaviy ish', en: 'Teamwork', ru: 'Командная работа' }, percent: 85 },
+        { name: { uz: 'Muloqot', en: 'Communication', ru: 'Коммуникация' }, percent: 80 },
+        { name: { uz: "Vaqtni boshqarish", en: 'Time Management', ru: 'Тайм-менеджмент' }, percent: 88 },
+        { name: { uz: 'Ijodkorlik', en: 'Creativity', ru: 'Креативность' }, percent: 92 },
+        { name: { uz: "O'rganishga ochiqlik", en: 'Continuous Learning', ru: 'Непрерывное обучение' }, percent: 95 }
+      ];
+      const ssg = document.getElementById('soft-skills-grid');
+      if (ssg) {
+        ssg.innerHTML = soft.map(function(s, i) {
+          const name = typeof s.name === 'object' ? (s.name[lang] || s.name.en) : s.name;
+          return '<div class="skill-card glass reveal stagger-' + ((i % 4) + 1) + '"><div class="skill-header"><span class="skill-name">' + name + '</span><span class="skill-percent">' + s.percent + '%</span></div><div class="skill-bar"><div class="skill-progress" data-percent="' + s.percent + '" style="width:' + s.percent + '%"></div></div></div>';
+        }).join('');
+      }
+
+      const interests = profile.interests || [
+        { icon: '⌨', title: { uz: 'Kod yozish', en: 'Coding', ru: 'Кодинг' } },
+        { icon: '🎨', title: { uz: 'Dizayn', en: 'Design', ru: 'Дизайн' } },
+        { icon: '📚', title: { uz: "O'rganish", en: 'Learning', ru: 'Обучение' } },
+        { icon: '🎮', title: { uz: "O'yinlar", en: 'Gaming', ru: 'Игры' } },
+        { icon: '🎵', title: { uz: 'Musiqa', en: 'Music', ru: 'Музыка' } },
+        { icon: '🚀', title: { uz: 'Texnologiya', en: 'Tech', ru: 'Технологии' } }
+      ];
+      const ig = document.getElementById('interests-grid');
+      if (ig) {
+        ig.innerHTML = interests.map(function(item, i) {
+          const t = typeof item.title === 'object' ? (item.title[lang] || item.title.en) : item.title;
+          return '<div class="stat-card glass reveal stagger-' + ((i % 4) + 1) + '" style="padding:1.5rem;"><div style="font-size:2rem;margin-bottom:0.5rem;">' + item.icon + '</div><div class="stat-label" style="color:var(--text);font-size:0.95rem;">' + t + '</div></div>';
+        }).join('');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', renderAbout);
+  </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Behruz Norsafarov — Frontend Developer">
+  <title>Contact — BEHRUZ.DEV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <div class="loader">
+    <div class="loader-logo">BEHRUZ.DEV</div>
+    <div class="loader-bar"><div class="loader-progress"></div></div>
+    <div class="loader-text">Loading...</div>
+  </div>
+
+  <canvas class="matrix-bg"></canvas>
+  <div class="grid-bg"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">BEHRUZ<span>.DEV</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+        <li><a href="about.html" data-i18n="nav_about">About</a></li>
+        <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+        <li><a href="skills.html" data-i18n="nav_skills">Skills</a></li>
+        <li><a href="contact.html" class="active" data-i18n="nav_contact">Contact</a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn" data-lang="uz">UZ</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ru">RU</button>
+        </li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="section" style="padding-top: 120px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label" data-i18n="contact_label">Get in Touch</span>
+        <h2 data-i18n="contact_title">Contact Me</h2>
+        <p data-i18n="contact_desc">Have a project or collaboration in mind? Send a message.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3 data-i18n="contact_info">Contact Info</h3>
+          
+          <div class="contact-item">
+            <div class="contact-icon">✉</div>
+            <div>
+              <h4 data-i18n="contact_email">Email</h4>
+              <a data-contact="email" href="mailto:behruz@behruz.dev">behruz@behruz.dev</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">✈</div>
+            <div>
+              <h4 data-i18n="contact_telegram">Telegram</h4>
+              <a data-contact="telegram" href="#" target="_blank" rel="noopener">Telegram</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">⌘</div>
+            <div>
+              <h4 data-i18n="contact_github">GitHub</h4>
+              <a data-contact="github" href="#" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">◎</div>
+            <div>
+              <h4 data-i18n="contact_instagram">Instagram</h4>
+              <a data-contact="instagram" href="#" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+        </div>
+
+        <form id="contact-form" class="contact-form glass reveal">
+          <div class="form-success"></div>
+          
+          <div class="form-group">
+            <label data-i18n="contact_name">Your Name</label>
+            <input type="text" name="name" id="name" required data-i18n-placeholder="contact_name">
+            <span class="error"></span>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="contact_email">Your Email</label>
+            <input type="email" name="email" id="email" required data-i18n-placeholder="contact_email">
+            <span class="error"></span>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="contact_subject">Subject</label>
+            <input type="text" name="subject" id="subject" required data-i18n-placeholder="contact_subject">
+            <span class="error"></span>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="contact_message">Message</label>
+            <textarea name="message" id="message" required data-i18n-placeholder="contact_message"></textarea>
+            <span class="error"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;" data-i18n="contact_send">Send Message</button>
+          
+          <p style="margin-top:1rem;font-size:0.75rem;color:var(--text-muted);text-align:center;">
+            Demo mode: messages are saved locally. For production connect a backend or Formspree/EmailJS.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="footer-logo">BEHRUZ.DEV</a>
+        <p class="footer-copy">&copy; 2026 Behruz Norsafarov. <span data-i18n="footer_rights">All rights reserved.</span></p>
+        <div class="footer-links">
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="projects.html" data-i18n="nav_projects">Projects</a>
+          <a href="contact.html" data-i18n="nav_contact">Contact</a>
+          <span class="live-clock"></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="js/storage.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

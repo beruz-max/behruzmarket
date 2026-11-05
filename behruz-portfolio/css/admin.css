@@ -1,0 +1,552 @@
+/* ============================================
+   BEHRUZ.DEV — Admin Panel Styles
+   ============================================ */
+
+:root {
+  --admin-sidebar: 260px;
+  --admin-bg: #050807;
+  --admin-card: rgba(10, 20, 15, 0.8);
+  --admin-border: rgba(0, 255, 136, 0.15);
+  --neon: #00FF88;
+  --text: #e0e0e0;
+  --text-muted: #8a9a8f;
+  --danger: #ff3366;
+  --warning: #ffaa00;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.admin-body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--admin-bg);
+  color: var(--text);
+  min-height: 100vh;
+  cursor: auto;
+}
+
+/* Login Page */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: 
+    linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2.5rem;
+  background: var(--admin-card);
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  backdrop-filter: blur(16px);
+}
+
+.login-card h1 {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--neon);
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.login-card .subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.login-form .form-group {
+  margin-bottom: 1.2rem;
+}
+
+.login-form label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--neon);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.05em;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--admin-border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.login-form input:focus {
+  border-color: var(--neon);
+}
+
+.login-error {
+  color: var(--danger);
+  font-size: 0.85rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  display: none;
+}
+
+.login-error.show {
+  display: block;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 0.9rem;
+  background: var(--neon);
+  color: #050807;
+  border: none;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.login-btn:hover {
+  background: #33ffaa;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+.login-demo {
+  margin-top: 1.5rem;
+  padding: 0.8rem;
+  background: rgba(0, 255, 136, 0.05);
+  border: 1px dashed var(--admin-border);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Admin Layout */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: var(--admin-sidebar);
+  background: rgba(5, 10, 8, 0.95);
+  border-right: 1px solid var(--admin-border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: transform 0.3s;
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.sidebar-header a {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--neon);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 1.5rem 0;
+  overflow-y: auto;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.5rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.25s;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  color: var(--neon);
+  background: rgba(0, 255, 136, 0.05);
+  border-left-color: var(--neon);
+}
+
+.sidebar-nav a i {
+  width: 20px;
+  text-align: center;
+}
+
+.sidebar-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--admin-border);
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 0.7rem;
+  background: transparent;
+  border: 1px solid var(--admin-border);
+  color: var(--text-muted);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+
+.logout-btn:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.admin-main {
+  margin-left: var(--admin-sidebar);
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-topbar {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--admin-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(5, 8, 7, 0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.admin-topbar h2 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.admin-content {
+  padding: 2rem;
+  flex: 1;
+}
+
+/* Stats cards */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.admin-stat-card {
+  background: var(--admin-card);
+  border: 1px solid var(--admin-border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: border-color 0.3s;
+}
+
+.admin-stat-card:hover {
+  border-color: var(--neon);
+}
+
+.admin-stat-card .label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.admin-stat-card .value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.8rem;
+  color: var(--neon);
+  font-weight: 700;
+}
+
+/* Tables */
+.admin-table-wrap {
+  background: var(--admin-card);
+  border: 1px solid var(--admin-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid var(--admin-border);
+  font-size: 0.9rem;
+}
+
+.admin-table th {
+  background: rgba(0, 255, 136, 0.05);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--neon);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table tr:hover td {
+  background: rgba(0, 255, 136, 0.03);
+}
+
+/* Forms */
+.admin-form {
+  background: var(--admin-card);
+  border: 1px solid var(--admin-border);
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 700px;
+}
+
+.admin-form .form-group {
+  margin-bottom: 1.3rem;
+}
+
+.admin-form label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--neon);
+  margin-bottom: 0.4rem;
+}
+
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--admin-border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+  border-color: var(--neon);
+}
+
+.admin-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.btn-admin {
+  padding: 0.75rem 1.5rem;
+  background: var(--neon);
+  color: #050807;
+  border: none;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-admin:hover {
+  background: #33ffaa;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+}
+
+.btn-admin-outline {
+  background: transparent;
+  border: 1px solid var(--neon);
+  color: var(--neon);
+}
+
+.btn-admin-outline:hover {
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.btn-danger {
+  background: transparent;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 51, 102, 0.15);
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  margin-right: 0.3rem;
+}
+
+/* Image upload */
+.upload-area {
+  border: 2px dashed var(--admin-border);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  position: relative;
+}
+
+.upload-area:hover {
+  border-color: var(--neon);
+}
+
+.upload-area input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-preview {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 8px;
+  margin-top: 1rem;
+  display: none;
+}
+
+.upload-preview.show {
+  display: block;
+}
+
+/* Notifications */
+.admin-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  background: var(--admin-card);
+  border: 1px solid var(--neon);
+  border-radius: 8px;
+  color: var(--neon);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  z-index: 1000;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.35s;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.admin-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.admin-toast.error {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* Mobile sidebar */
+.sidebar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--neon);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .admin-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .admin-main {
+    margin-left: 0;
+  }
+
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-content {
+    padding: 1.25rem;
+  }
+}
+
+/* Activity log */
+.activity-log {
+  list-style: none;
+}
+
+.activity-log li {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--admin-border);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.activity-log li span:first-child {
+  color: var(--text);
+}
+
+.activity-log .time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
